@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".MainActivity">
+
+    <ToggleButton
+        android:id="@+id/remoteCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:textOff="@string/local_node"
+        android:textOn="@string/remote_node"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sync"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sync"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/btn_sync"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/accountPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B0BEC5"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/remoteCheck"
+        app:layout_constraintTop_toBottomOf="@+id/sync">
+
+        <TextView
+            android:id="@+id/accountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Account"
+            android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/accountAddressLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Address"
+            android:textIsSelectable="true"
+            app:layout_constraintTop_toBottomOf="@+id/accountLabel" />
+
+        <TextView
+            android:id="@+id/accountAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="end"
+            android:singleLine="true"
+            android:text="..."
+            android:textIsSelectable="true"
+            app:layout_constraintBaseline_toBaselineOf="@id/accountAddressLabel"
+            app:layout_constraintLeft_toRightOf="@+id/accountAddressLabel"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/balanceInEtherLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Balance(wei)"
+            app:layout_constraintTop_toBottomOf="@id/accountAddressLabel" />
+
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="end"
+            android:singleLine="true"
+            android:text="..."
+            app:layout_constraintBaseline_toBaselineOf="@id/balanceInEtherLabel"
+            app:layout_constraintLeft_toRightOf="@+id/balanceInEtherLabel"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/balanceInTokenLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Balance(token)"
+            app:layout_constraintTop_toBottomOf="@id/balanceInEtherLabel" />
+
+        <TextView
+            android:id="@+id/balanceInToken"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="end"
+            android:singleLine="true"
+            android:text="..."
+            app:layout_constraintBaseline_toBaselineOf="@id/balanceInTokenLabel"
+            app:layout_constraintLeft_toRightOf="@+id/balanceInTokenLabel"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/getAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="get account"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balanceInTokenLabel" />
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/sendTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="send to"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountPanel" />
+
+    <EditText
+        android:id="@+id/toAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:singleLine="true"
+        android:text="@string/bokky_token_address"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sendTo"
+        app:layout_constraintLeft_toRightOf="@id/sendTo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountPanel" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/tokenPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#B0BEC5"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sendTo">
+
+        <TextView
+            android:id="@+id/tokenContractLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="118dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Token contract"
+            android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tokenContractAddressLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Address"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tokenContractAddress" />
+
+        <EditText
+            android:id="@+id/tokenContractAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:singleLine="true"
+            android:text="@string/bokky_token_address"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/tokenContractAddressLabel"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tokenContractLabel" />
+
+        <TextView
+            android:id="@+id/tokenContractAbiLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="ABI"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tokenContractAbi" />
+
+        <EditText
+            android:id="@+id/tokenContractAbi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:singleLine="true"
+            android:text="@string/bokky_token_abi"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/tokenContractAbiLabel"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tokenContractAddress" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/latestBlockInfoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Latest block info:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/latestBlockInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="..."
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/latestBlockInfoLabel"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
